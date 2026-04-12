@@ -6,6 +6,11 @@ int main() {
     printf("Enter rows and columns: ");
     scanf("%d %d", &r, &c);
 
+    if (r <= 0 || c <= 0 || r > 10 || c > 10) {
+        printf("Invalid matrix size! Rows and columns must be between 1 and 10.\n");
+        return 1;
+    }
+
     printf("Enter Matrix 1 elements:\n");
     for (i = 0; i < r; i++)
         for (j = 0; j < c; j++)

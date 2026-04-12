@@ -1,21 +1,37 @@
 #include <stdio.h>
 
-void swapVal(int a, int b) {
-    int t = a; a = b; b = t;
+// Swap WITHOUT pointers (call by value - swaps local copies only)
+void swapWithoutPointers(int a, int b) {
+    int temp = a;
+    a = b;
+    b = temp;
+    printf("Inside function (without pointers): a = %d, b = %d\n", a, b);
 }
 
-void swapRef(int *x, int *y) {
-    int t = *x; *x = *y; *y = t;
+// Swap WITH pointers (call by reference - swaps actual values)
+void swapWithPointers(int *a, int *b) {
+    int temp = *a;
+    *a = *b;
+    *b = temp;
 }
 
 int main() {
-    int a, b, x, y;
+    int x, y;
+
     printf("Enter two numbers: ");
-    scanf("%d %d", &a, &b);
-    x = a; y = b;
-    swapVal(a, b);
-    printf("After swap by value: a=%d b=%d\n", a, b);
-    swapRef(&x, &y);
-    printf("After swap by reference: x=%d y=%d\n", x, y);
+    scanf("%d %d", &x, &y);
+
+    // --- Without Pointers ---
+    printf("\n-- Without Pointers --\n");
+    printf("Before swap: x = %d, y = %d\n", x, y);
+    swapWithoutPointers(x, y);
+    printf("After swap:  x = %d, y = %d  (unchanged in main!)\n", x, y);
+
+    // --- With Pointers ---
+    printf("\n-- With Pointers --\n");
+    printf("Before swap: x = %d, y = %d\n", x, y);
+    swapWithPointers(&x, &y);
+    printf("After swap:  x = %d, y = %d\n", x, y);
+
     return 0;
 }

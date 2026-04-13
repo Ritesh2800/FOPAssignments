@@ -3,7 +3,7 @@
 
 int main() {
     FILE *s, *d;
-    int c;                          
+    char c;                          
 
     s = fopen("source.txt", "r");
     d = fopen("dest.txt", "w");
